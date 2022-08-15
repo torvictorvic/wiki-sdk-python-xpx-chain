@@ -7,6 +7,8 @@ account = models.Account.generate_new_account(models.NetworkType.MIJIN_TEST)
 
 print(account.public_key)
 print(account.private_key)
+print(account.address)
+
 ```
 
 ### Create an Address from a given public key
@@ -55,3 +57,31 @@ print(account.public_key)
 print(account.private_key)
 ```
 
+
+
+
+
+
+### Create an Address from a mnemonic
+
+* first param - mnemonic of strength=256.
+* second param - A NetworkType:
+  * MainNet = Main net network.
+  * TestNet = Test net network.
+  * Mijin = Mijin net network.
+  * MijinTest= Mijin test net network.
+* Return - An Address struct
+* The Address structure describes an public Address, NetworkType.
+
+```python
+from mnemonic import Mnemonic
+from xpxchain import models
+
+mnemo = Mnemonic("english")
+new_account_fmn = models.Account.create_from_mnemonic( mnemo.generate(strength=256), NETWORK_TYPE)
+print( "address: " + new_account_fmn.address.address )
+print( "public_key: " + new_account_fmn.public_key )
+print( "private_key: " + new_account_fmn.private_key )
+print("\n")
+
+```
