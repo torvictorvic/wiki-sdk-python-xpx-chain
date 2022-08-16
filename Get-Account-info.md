@@ -9,8 +9,8 @@ Returns AccountInfo for an account.
 from xpxchain import models
 from xpxchain import client
 
-ENDPOINT = '//localhost:3000'
-public_key = '0EB448D07C7CCB312989AC27AA052738FF589E2F83973F909B506B450DC5C4E2'
+ENDPOINT = 'https://bctestnet3.brimstone.xpxsirius.io'
+public_key = '3DB3DC590716ABFF18CA078D4843D4DDFD41934F6D327C17DBD12946C1172CF2'
 
 account = models.PublicAccount.create_from_public_key(public_key, models.NetworkType.MIJIN_TEST)
 
@@ -31,15 +31,15 @@ Returns AccountInfo for multiple accounts.
 from xpxchain import models
 from xpxchain import client
 
-ENDPOINT = '//localhost:3000'
-alice_key = '0EB448D07C7CCB312989AC27AA052738FF589E2F83973F909B506B450DC5C4E2'
-bob_key = '73472A2E9DCEA5C2A36EB7F6A34A634010391EC89E883D67360DB16F28B9443C'
+ENDPOINT = 'https://bctestnet3.brimstone.xpxsirius.io'
+alice_key = '3DB3DC590716ABFF18CA078D4843D4DDFD41934F6D327C17DBD12946C1172CF2'
+bob_key = '990585BBB7C97BB61D90410B67552D82D30738994BA7CF2B1041D1E0A6E4169B'
 
 alice = models.PublicAccount.create_from_public_key(alice_key, models.NetworkType.MIJIN_TEST)
 bob = models.PublicAccount.create_from_public_key(bob_key, models.NetworkType.MIJIN_TEST)
 
 with client.AccountHTTP(ENDPOINT) as http:
-    accounts = http.get_accounts_info([alice.address, bob.address])
+    accounts = http.get_accounts_info([alice, bob])
     print(accounts)
 ```
 
@@ -54,8 +54,8 @@ Gets an array of confirmed transaction for which an account is signer or recipie
 from xpxchain import models
 from xpxchain import client
 
-ENDPOINT = '//localhost:3000'
-public_key = '0EB448D07C7CCB312989AC27AA052738FF589E2F83973F909B506B450DC5C4E2'
+ENDPOINT = 'https://bctestnet3.brimstone.xpxsirius.io'
+public_key = '3DB3DC590716ABFF18CA078D4843D4DDFD41934F6D327C17DBD12946C1172CF2'
 
 account = models.PublicAccount.create_from_public_key(public_key, models.NetworkType.MIJIN_TEST)
 
