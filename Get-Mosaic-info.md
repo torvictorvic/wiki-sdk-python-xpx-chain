@@ -8,17 +8,17 @@
 from xpxchain import models
 from xpxchain import client
 
-ENDPOINT = '//localhost:3000'
+ENDPOINT = 'https://bctestnet3.brimstone.xpxsirius.io'
 
-public_key = '0EB448D07C7CCB312989AC27AA052738FF589E2F83973F909B506B450DC5C4E2'
-nonce = 1234
+PUBLIC_KEY = '3DB3DC590716ABFF18CA078D4843D4DDFD41934F6D327C17DBD12946C1172CF2'
+account   = models.PublicAccount.create_from_public_key( PUBLIC_KEY, models.NetworkType.TEST_NET)
 
-account = models.PublicAccount.create_from_public_key(public_key, models.NetworkType.MIJIN_TEST)
-mosaic_id = models.MosaicId.create_from_nonce(models.MosaicNonce.create_from_int(nonce), account)
+with client.AccountHTTP(ENDPOINT) as http:
+    accounts = http.get_accounts_info([account])
+    with client.MosaicHTTP(ENDPOINT) as httpm:
+        mosaic_info = httpm.get_mosaic( format(accounts[0].mosaics[0].id.id, "x") )
+        print(mosaic_info)
 
-with client.MosaicHTTP(ENDPOINT) as http:
-    mosaic_info = http.get_mosaic(mosaic_id)
-    print(mosaic_info)
 ```
 
 
@@ -31,19 +31,20 @@ with client.MosaicHTTP(ENDPOINT) as http:
 from xpxchain import models
 from xpxchain import client
 
-ENDPOINT = '//localhost:3000'
 
-public_key = '0EB448D07C7CCB312989AC27AA052738FF589E2F83973F909B506B450DC5C4E2'
-nonce1 = 1234
-nonce2 = 12345
+PUBLIC_KEY_1 = '3DB3DC590716ABFF18CA078D4843D4DDFD41934F6D327C17DBD12946C1172CF2'
+PUBLIC_KEY_2 = '990585BBB7C97BB61D90410B67552D82D30738994BA7CF2B1041D1E0A6E4169B'
 
-account = models.PublicAccount.create_from_public_key(public_key, models.NetworkType.MIJIN_TEST)
-mosaic1_id = models.MosaicId.create_from_nonce(models.MosaicNonce.create_from_int(nonce), account)
-mosaic2_id = models.MosaicId.create_from_nonce(models.MosaicNonce.create_from_int(nonce), account)
+account_1 = models.PublicAccount.create_from_public_key( PUBLIC_KEY_1, models.NetworkType.TEST_NET)
+account_2 = models.PublicAccount.create_from_public_key( PUBLIC_KEY_2, models.NetworkType.TEST_NET)
 
-with client.MosaicHTTP(ENDPOINT) as http:
-    mosaics_info = http.get_mosaics([mosaic1_id, mosaic2_id])
-    print(mosaics_info)
+with client.AccountHTTP(ENDPOINT) as http:
+    accounts = http.get_accounts_info([account_1, account_2])    
+
+    with client.MosaicHTTP(ENDPOINT) as httpm:
+        mosaics_info = httpm.get_mosaics([ format(accounts[0].mosaics[0].id.id, "x") , format(accounts[1].mosaics[0].id.id, "x") ])
+        print( mosaics_info )
+
 ```
 
 
@@ -56,7 +57,7 @@ with client.MosaicHTTP(ENDPOINT) as http:
 from xpxchain import models
 from xpxchain import client
 
-ENDPOINT = '//localhost:3000'
+ENDPOINT = 'https://bctestnet3.brimstone.xpxsirius.io'
 
 public_key = '0EB448D07C7CCB312989AC27AA052738FF589E2F83973F909B506B450DC5C4E2'
 namespace_name = 'foo'
