@@ -7,7 +7,7 @@
 from xpxchain import models
 from xpxchain import client
 
-ENDPOINT = '//localhost:3000'
+ENDPOINT = 'https://bctestnet3.brimstone.xpxsirius.io'
 
 namespace_name = 'foo'
 
@@ -28,7 +28,7 @@ with client.NamespaceHTTP(ENDPOINT) as http:
 from xpxchain import models
 from xpxchain import client
 
-ENDPOINT = '//localhost:3000'
+ENDPOINT = 'https://bctestnet3.brimstone.xpxsirius.io'
 
 public_key = '0EB448D07C7CCB312989AC27AA052738FF589E2F83973F909B506B450DC5C4E2'
 
@@ -50,7 +50,7 @@ with client.NamespaceHTTP(ENDPOINT) as http:
 from xpxchain import models
 from xpxchain import client
 
-ENDPOINT = '//localhost:3000'
+ENDPOINT = 'https://bctestnet3.brimstone.xpxsirius.io'
 
 namespace_id_1 = models.NamespaceId('foo')
 namespace_id_2 = models.NamespaceId('bar')
@@ -70,7 +70,7 @@ with client.NamespaceHTTP(ENDPOINT) as http:
 from xpxchain import models
 from xpxchain import client
 
-ENDPOINT = '//localhost:3000'
+ENDPOINT = 'https://bctestnet3.brimstone.xpxsirius.io'
 
 public_key_1 = '0EB448D07C7CCB312989AC27AA052738FF589E2F83973F909B506B450DC5C4E2'
 public_key_2 = '73472A2E9DCEA5C2A36EB7F6A34A634010391EC89E883D67360DB16F28B9443C'
