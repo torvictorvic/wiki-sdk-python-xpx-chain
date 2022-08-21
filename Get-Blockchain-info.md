@@ -1,11 +1,10 @@
-
 ### Get the current height of the chain
 
 ```python
 from xpxchain import models
 from xpxchain import client
 
-ENDPOINT = '//localhost:3000'
+ENDPOINT = 'https://bctestnet3.brimstone.xpxsirius.io'
 
 with client.BlockchainHTTP(ENDPOINT) as http:
     height = http.get_blockchain_height()
@@ -22,7 +21,8 @@ with client.BlockchainHTTP(ENDPOINT) as http:
 from xpxchain import models
 from xpxchain import client
 
-ENDPOINT = '//localhost:3000'
+ENDPOINT = 'https://bctestnet3.brimstone.xpxsirius.io'
+
 height = 100
 
 with client.BlockchainHTTP(ENDPOINT) as http:
@@ -41,8 +41,10 @@ with client.BlockchainHTTP(ENDPOINT) as http:
 from xpxchain import models
 from xpxchain import client
 
-ENDPOINT = '//localhost:3000'
+ENDPOINT = 'https://bctestnet3.brimstone.xpxsirius.io'
+
 height = 100
+
 limit = 10
 
 with client.BlockchainHTTP(ENDPOINT) as http:
@@ -60,7 +62,8 @@ with client.BlockchainHTTP(ENDPOINT) as http:
 from xpxchain import models
 from xpxchain import client
 
-ENDPOINT = '//localhost:3000'
+ENDPOINT = 'https://bctestnet3.brimstone.xpxsirius.io'
+
 height = 1
 
 with client.BlockchainHTTP(ENDPOINT) as http:
@@ -75,7 +78,7 @@ with client.BlockchainHTTP(ENDPOINT) as http:
 from xpxchain import models
 from xpxchain import client
 
-ENDPOINT = '//localhost:3000'
+ENDPOINT = 'https://bctestnet3.brimstone.xpxsirius.io'
 
 with client.BlockchainHTTP(ENDPOINT) as http:
     score = http.get_blockchain_score()
